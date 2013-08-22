@@ -5,14 +5,15 @@ The final project will be a small demo application built using AngularJS. This a
 
 You will start with an existing demo application for ordering restaurant delivery, and build upon it with your own features. The exact features you add to it are up to you: customer profile page, additional restaurant search and filter options, enhancements to the shopping cart, enhancements to the restaurant menus, comments from other customers, a delivery route map, etc. Be creative! You can add any features you want; you will be graded on your use of the AngularJS framework according to the following breakdown.
 
-* Start by cloning the [FoodMe repository](https://github.com/IgorMinar/foodme) and going through [the tutorial](https://docs.google.com/document/d/1Fzq60IBaSf5mnsLWhig5nhZ9cJT85sresp0NqNIwh1I/pub). *(10 points)*
-* Create at least two template partials, each with its own controller. *(10 points: 5 points for each)*
-* Create at least two custom directives. *(10 points: 5 points for each)*
-* Create at least one custom filter. *(5 points)*
-* Create at least one event handler function. *(5 points)*
+* Start by cloning the [FoodMe repository](https://github.com/IgorMinar/foodme) and going through [the tutorial](https://docs.google.com/document/d/1Fzq60IBaSf5mnsLWhig5nhZ9cJT85sresp0NqNIwh1I/pub). **(10 points)**
+* Create at least two template partials, each with its own controller. **(10 points: 5 points for each)**
+* Create at least two custom directives. **(10 points: 5 points for each)**
+* Create at least one custom filter. **(5 points)**
+* Create at least one event handler function. **(5 points)**
 
 
-*Steps to submit*
+**Steps to submit**
+
 1. Fork this repository. See the instructions in Week 1 for details: <https://github.com/aipdx-wdim387/week1>.
 2. Visit the [FoodMe tutorial](https://docs.google.com/document/d/1Fzq60IBaSf5mnsLWhig5nhZ9cJT85sresp0NqNIwh1I/pub) and the [FoodMe repository](https://github.com/IgorMinar/foodme). If you are experienced with Git, you may want to set up the [FoodMe repository](https://github.com/IgorMinar/foodme) as an additional remote for this one, and merge the code from FoodMe into this one. If you don't understand what that means or don't know how to do that, just clone the [FoodMe repository](https://github.com/IgorMinar/foodme) as a separate directory, and then copy and paste the files from it into this repository.
 3. Follow the tutorial, and then add your own features, per the instructions above.

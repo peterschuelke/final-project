@@ -236,3 +236,27 @@ input.ng-invalid.ng-dirty {
 input.ng-invalid {
   border: 1px solid red;
 }
+
+/* Orders */
+
+.fm-orders{
+  border: 1px solid black;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.fm-orders th,
+.fm-orders td{
+  padding:3px;
+  text-align: left;
+}
+.fm-orders tr:first-child th,
+.fm-orders tr:first-child td{
+  padding-top:10px;
+}
+.fm-orders tr:last-child th,
+.fm-orders tr:last-child td{
+  padding-bottom:10px;
+}
+.fm-orders th:first-child{
+  padding-left:10px;
+};

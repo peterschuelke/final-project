@@ -29,6 +29,10 @@ foodMeApp.config(function($routeProvider) {
         controller: 'WishListController',
         templateUrl: 'views/wish-list.html'
       }).
+      when('/orders', {
+        controller: 'OrdersController',
+        templateUrl: 'views/orders.html'
+      }).
       when('/who-we-are', {
         templateUrl: 'views/who-we-are.html'
       }).

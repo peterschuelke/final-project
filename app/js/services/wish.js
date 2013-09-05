@@ -42,11 +42,6 @@ foodMeApp.service('wish', function Wish(localStorage, customer, $rootScope, $htt
     }
   }
 
-  self.reset = function() {
-    self.items = [];
-    self.restaurant = {};
-  };
-
   self.total = function() {
     return self.items.length;
   };

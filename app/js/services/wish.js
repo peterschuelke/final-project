@@ -4,8 +4,6 @@ foodMeApp.service('wish', function Wish(localStorage, customer, $rootScope, $htt
   var self = this;
 
   self.add = function(item, restaurant) {
-    //console.log(item);
-    console.log(restaurant);
     if (!self.restaurant || !self.restaurant.id) {
       self.restaurant = {
         id: restaurant.id,
@@ -13,7 +11,6 @@ foodMeApp.service('wish', function Wish(localStorage, customer, $rootScope, $htt
         description: restaurant.description
       };
     }
-
 
     self.items.forEach(function(wishItem) {
       if (item && wishItem.name == item.name) {
@@ -27,7 +24,6 @@ foodMeApp.service('wish', function Wish(localStorage, customer, $rootScope, $htt
       item = angular.copy(item);
       item.qty = 1;
       self.items.push(item);
-      console.log(item);
     }
   };
 
@@ -41,6 +37,7 @@ foodMeApp.service('wish', function Wish(localStorage, customer, $rootScope, $htt
       self.restaurant = {};
     }
   }
+
 
   self.total = function() {
     return self.items.length;

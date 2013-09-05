@@ -10,20 +10,20 @@ foodMeApp.controller('WishListController',
     wish: [],
   };
 
-  for (var i = $scope.wish.items.length - 1; i >= 0; i--) {
-    if($scope.wish.items[i].restaurant){
-      if(filter.wish.indexOf($scope.wish.items[i].restaurant) == -1){
-        filter.wish.push($scope.wish.items[i].restaurant);
-      }
-    }
-  };
-
   var allRestaurants = Restaurant.query(filterRestaurants);
 
   $scope.$watch('filter', filterRestaurants, true);
 
   function filterRestaurants() {
     $scope.restaurants = [];
+
+    for (var i = $scope.wish.items.length - 1; i >= 0; i--) {
+      if($scope.wish.items[i].restaurant){
+        if(filter.wish.indexOf($scope.wish.items[i].restaurant) == -1){
+          filter.wish.push($scope.wish.items[i].restaurant);
+        }
+      }
+    };
 
     // filter
     angular.forEach(allRestaurants, function(item, key) {

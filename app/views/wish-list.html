@@ -1,0 +1,51 @@
+<fm-deliver-to></fm-deliver-to>
+
+<div class="row-fluid">
+
+  <div class="span8 fm-panel fm-menu-list">
+    <h4>Wish List</h4>
+
+    <table class="table table-hover table-striped" ng-repeat="restaurant in restaurants">
+      <tr>
+        <th><a href="#/menu/{{restaurant.id}}">{{restaurant.name}}</a></th>
+        <th>Cost</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="wishItem in restaurant.items">
+        <td>
+          <p>{{wishItem.name}}</p>
+        </td>
+        <td>
+          <p>{{wishItem.price}}</p>
+        </td>
+        <td>
+          <a href ng-click="cart.add(wishItem, restaurant)">Add to Cart</a>
+        </td>
+        <td>
+          <a href ng-click="wish.remove(wishItem)">Remove</a>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="span4 fm-panel fm-cart">
+    <h4>Your order</h4>
+    <form>
+      <ul class="unstyled">
+        <li ng-repeat="item in cart.items">
+          <a href ng-click="cart.remove(item)"><i class="icon-remove-sign"></i></a>
+          {{item.qty}} &times; {{item.name}}
+        </li>
+      </ul>
+      <div class="pull-right" ng-show="cart.items.length">
+        <a href="#/checkout" ng-disabled="!cart.items.length" class="btn">Checkout</a>
+      </div>
+      <p>
+        <b>Total: {{cart.total() | currency}}</b>
+      </p>
+    </form>
+  </div>
+
+</div>

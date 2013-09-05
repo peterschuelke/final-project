@@ -1,9 +1,10 @@
 'use strict';
 
 foodMeApp.controller('MenuController',
-    function MenuController($scope, $routeParams, Restaurant, cart) {
+    function MenuController($scope, $routeParams, Restaurant, cart, wish) {
 
   $scope.restaurant = Restaurant.get({id: $routeParams.restaurantId});
   $scope.cart = cart;
+  $scope.wish = wish;
 
 });

@@ -41,6 +41,7 @@
           <span>{{menuItem.price}}</span>
           <i class="icon-plus-sign"></i>
         </a>
+        <a href ng-click="wish.add(menuItem, restaurant)">Add to Wish List</a>
       </li>
     </ul>
 
@@ -63,5 +64,6 @@
       </p>
     </form>
   </div>
+  <fm-wish-list class="span4 fm-panel"></fm-wish-list>
 
 </div>

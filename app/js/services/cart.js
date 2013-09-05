@@ -1,10 +1,17 @@
 'use strict';
 
-foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $http, alert) {
+foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $http, alert, Restaurant) {
   var self = this;
 
 
   self.add = function(item, restaurant) {
+    console.log(item);
+    if(!restaurant.id){
+      var restaurantResource ={};
+      restaurantResource = Restaurant.get({id: restaurant});
+      console.log(restaurantResource);
+    }
+
     if (!self.restaurant || !self.restaurant.id) {
       self.restaurant = {
         id: restaurant.id,

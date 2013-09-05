@@ -1,7 +1,4 @@
-<div class="breadcrumb fm-deliver-to">
-  Deliver to: {{customer.address}}
-  <a href="#/customer" class="pull-right">Change</a>
-</div>
+<fm-deliver-to></fm-deliver-to>
 
 
 <div class="row-fluid">
@@ -13,63 +10,19 @@
 
       <h5>Rating</h5>
 
-      <ul class="fm-rating pointer">
-        <li class="fm-selected">★</li>
-        <li class="fm-selected">★</li>
-        <li class="fm-selected">★</li>
-        <li>★</li>
-        <li>★</li>
-      </ul>
-      <a ng-hide="disabled" ng-click="clear()" href="" style="">clear</a>
+      <fm-rating ng-model="$parent.filter.rating"></fm-rating>
 
 
       <h5>Price</h5>
 
-      <ul class="fm-rating">
-        <li class="fm-selected">$</li>
-        <li class="fm-selected">$</li>
-        <li>$</li>
-        <li>$</li>
-        <li>$</li>
-      </ul>
-      <a ng-hide="disabled" ng-click="clear()" href="" style="">clear</a>
+      <fm-rating ng-model="$parent.filter.price" symbol="$"></fm-rating>
 
 
       <h5>Cuisine</h5>
 
-      <div>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> African
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Barbecue
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Cafe
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Czech / Slovak
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> German
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Indian
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Japanese
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Mexican
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Pizza
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Thai
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" value="african"> Vegetarian
+      <div fm-checkbox-list ng-model="filter.cuisine">
+        <label ng-repeat="(name, title) in CUISINE_OPTIONS" class="checkbox">
+          <input type="checkbox" value="{{name}}"> {{title}}
         </label>
       </div>
     </form>
@@ -87,9 +40,9 @@
 
     <table class="table table-hover table-striped">
       <tr>
-        <th><a href>Name &#9650;</a></th>
-        <th><a href>Price </a></th>
-        <th><a href>Rating </a></th>
+        <th><a href ng-click="sortBy('name')">Name {{sortIconFor('name')}}</a></th>
+        <th><a href ng-click="sortBy('price')">Price {{sortIconFor('price')}}</a></th>
+        <th><a href ng-click="sortBy('rating')">Rating {{sortIconFor('rating')}}</a></th>
       </tr>
       <tr ng-repeat="restaurant in restaurants">
         <td>
@@ -100,10 +53,10 @@
           <p>{{restaurant.description}}</p>
         </td>
         <td>
-          {{restaurant.rating}}
+          <fm-rating ng-model="$parent.restaurant.rating" readonly="true"></fm-rating>
         </td>
         <td>
-          {{restaurant.price}}
+          <fm-rating ng-model="$parent.restaurant.price" symbol="$" readonly="true" ></fm-rating>
         </td>
       </tr>
     </table>

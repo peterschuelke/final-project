@@ -29,6 +29,10 @@ foodMeApp.controller('RestaurantsController',
         return;
       }
 
+      if (filter.cuisine.length && filter.cuisine.indexOf(item.cuisine) === -1) {
+        return;
+      }
+
       $scope.restaurants.push(item);
     });
 

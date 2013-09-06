@@ -1,0 +1,44 @@
+<table class="fm-orders" ng-repeat="order in orders">
+      <tr>
+        <th>Order: </th>
+        <td colspan="3">{{order.orderId}}</td>
+      </tr>
+      <tr>
+        <th>Customer: </th>
+        <td colspan="3">{{order.deliverTo.name}}</td>
+      </tr>
+      <tr>
+        <th>Address: </th>
+        <td colspan="3">{{order.deliverTo.address}}</td>
+      </tr>
+      <tr>
+        <th>Restaurant: </th>
+        <td colspan="3">{{order.restaurant.name}}</td>
+      </tr>
+      <tr>
+        <th>Items</th>
+        <th>Name</th>
+        <th>Cost</th>
+        <th>Qty</th>
+      </tr>
+      <tr ng-repeat="item in order.items">
+        <td></td>
+        <td>
+          <p>{{item.name}}</p>
+        </td>
+        <td>
+          <p>{{item.price}}</p>
+        </td>
+        <td>
+          <p>{{item.qty}}</p>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="3">Total: </th>
+        <td>{{order.total | currency }}</td>
+      </tr>
+      <tr>
+        <th>Payment Method:</th>
+        <td colspan="3">{{order.payment.type}}...{{order.payment.number}}</td>
+      </tr>
+    </table>

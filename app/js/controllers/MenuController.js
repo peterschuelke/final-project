@@ -6,5 +6,5 @@ foodMeApp.controller('MenuController',
   $scope.restaurant = Restaurant.get({id: $routeParams.restaurantId});
   $scope.cart = cart;
   $scope.wish = wish;
-  console.log(cart);
+
 });

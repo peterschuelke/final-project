@@ -13,6 +13,7 @@ foodMeApp.controller('RestaurantsController',
      rating: null
    };
 
+
   var allRestaurants = Restaurant.query(filterAndSortRestaurants);
   $scope.$watch('filter', filterAndSortRestaurants, true);
 

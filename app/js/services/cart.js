@@ -2,12 +2,13 @@
 
 foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $http, alert, Restaurant) {
   var self = this;
+  self.orders = [];
+
 
   self.add = function(item, restaurant) {
     if(!restaurant.id){
       var restaurantResource ={};
       restaurantResource = Restaurant.get({id: restaurant});
-      console.log(restaurantResource);
     }
 
     if (!self.restaurant || !self.restaurant.id) {
@@ -70,7 +71,7 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
 
 
   self.reset = function(response) {
-    self.orders[response]={
+    var order = {
       orderId: response,
       items: self.items,
       total: self.total(),
@@ -81,7 +82,7 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
       },
       deliverTo: customer
     };
-
+    self.orders.push(order);
     self.items = [];
     self.restaurant = {};
   };
@@ -89,7 +90,7 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
 
   createPersistentProperty('items', 'fmCartItems', Array);
   createPersistentProperty('restaurant', 'fmCartRestaurant', Object);
-  createPersistentProperty('orders', 'fmCartOrders', Object);
+  createPersistentProperty('orders', 'fmCartOrders', Array);
   self.payment = {}; // don't keep CC info in localStorage
 
 

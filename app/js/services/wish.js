@@ -2,49 +2,52 @@
 
 foodMeApp.service('wish', function Wish(localStorage, customer, $rootScope, $http, alert) {
   var self = this;
+  self.restaurants;
+
+  //localStorage.clear();
 
   self.add = function(item, restaurant) {
-    if (!self.restaurant || !self.restaurant.id) {
-      self.restaurant = {
-        id: restaurant.id,
-        name: restaurant.name,
-        description: restaurant.description
-      };
-    }
 
-    self.items.forEach(function(wishItem) {
-      if (item && wishItem.name == item.name) {
-        wishItem.qty ++;
-        item = null;
-      }
-    });
     if (item) {
-      item.restaurant = {};
+
       item.restaurant = restaurant.id;
-      item = angular.copy(item);
-      item.qty = 1;
-      self.items.push(item);
+
+      if(!self.restaurants[restaurant.id]){
+        self.restaurants[restaurant.id] ={};
+        self.restaurants[restaurant.id].items = [item];
+        self.restaurants[restaurant.id].name = restaurant.name;
+      }else{
+        if (self.restaurants[restaurant.id].items.indexOf(item) == -1){
+          self.restaurants[restaurant.id].items.push(item);
+        }
+      }
     }
   };
 
 
   self.remove = function(item) {
-    var index = self.items.indexOf(item);
+    var index = self.restaurants[item.restaurant].items.indexOf(item);
     if (index >= 0) {
-      self.items.splice(index, 1);
+      self.restaurants[item.restaurant].items.splice(index, 1);
     }
-    if (!self.items.length) {
-      self.restaurant = {};
+    if (!self.restaurants[item.restaurant].items.length) {
+      delete self.restaurants[item.restaurant];
     }
   }
 
 
   self.total = function() {
-    return self.items.length;
+    var total = 0;
+    for (var restaurant in self.restaurants) {
+      if(self.restaurants.hasOwnProperty(restaurant)){
+        total += self.restaurants[restaurant].items.length;
+      }
+    };
+    return total;
   };
 
 
-  createPersistentProperty('items', 'fmWishItems', Array);
+  createPersistentProperty('restaurants', 'fmWishItems', Object);
 
   function createPersistentProperty(localName, storageName, Type) {
     var json = localStorage[storageName];

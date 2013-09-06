@@ -4,30 +4,30 @@
 
   <div class="span8 fm-panel fm-menu-list">
     <h4>Wish List</h4>
-
-    <table class="table table-hover table-striped" ng-repeat="restaurant in restaurants">
-      <tr>
-        <th><a href="#/menu/{{restaurant.id}}">{{restaurant.name}}</a></th>
-        <th>Cost</th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr ng-repeat="wishItem in restaurant.items">
-        <td>
-          <p>{{wishItem.name}}</p>
-        </td>
-        <td>
-          <p>{{wishItem.price}}</p>
-        </td>
-        <td>
-          <a href ng-click="cart.add(wishItem, restaurant)">Add to Cart</a>
-        </td>
-        <td>
-          <a href ng-click="wish.remove(wishItem)">Remove</a>
-        </td>
-      </tr>
-    </table>
-
+    <div id="WishListController" ng-controller="WishListController">
+      <table class="table table-hover table-striped" ng-repeat="restaurant in restaurants">
+        <tr>
+          <th><a href="#/menu/{{restaurant.id}}">{{restaurant.name}}</a></th>
+          <th>Cost</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="wishItem in restaurant.items">
+          <td>
+            <p>{{wishItem.name}}</p>
+          </td>
+          <td>
+            <p>{{wishItem.price}}</p>
+          </td>
+          <td>
+            <a href ng-click="cart.add(wishItem, restaurant)">Add to Cart</a>
+          </td>
+          <td>
+            <a href ng-click="wish.remove(wishItem)">Remove</a>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 
   <div class="span4 fm-panel fm-cart">
